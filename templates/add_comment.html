@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Adăugare Articol{% endblock %}
+
+{% block content %}
+    <h1>Adăugare Articol</h1>
+    <form method="POST">
+        <label for="title">Titlu:</label><br>
+        <input type="text" id="title" name="title"><br>
+        <label for="content">Conținut:</label><br>
+        <textarea id="content" name="content" rows="6" cols="50"></textarea><br>
+        <input type="submit" value="Adaugă Articol">
+    </form>
+{% endblock %}

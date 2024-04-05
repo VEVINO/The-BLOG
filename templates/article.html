@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ article.title }}</title>
+    <style>
+        /* Stiluri CSS pot fi adăugate aici pentru a personaliza aspectul paginii */
+    </style>
+</head>
+<body>
+    <h1>{{ article.title }}</h1>
+    <p>{{ article.content }}</p>
+
+    <!-- Text adițional la articol -->
+<div class="additional-info">
+    <h3>Informații suplimentare:</h3>
+    <ul>
+        <li><a href="https://www.wikipedia.org/">Link către Wikipedia</a></li>
+        <li><a href="https://www.google.com/">Link către Google</a></li>
+    </ul>
+</div>
+
+
+    <h2>Comentarii</h2>
+    <ul>
+        {% for comment in comments %}
+            <li>{{ comment }}</li>
+        {% endfor %}
+    </ul>
+
+    <form method="POST" action="/article/{{ article.id }}">
+        <textarea name="content" rows="4" cols="50" placeholder="Adăugați un comentariu"></textarea><br>
+        <input type="submit" value="Trimite comentariu">
+    </form>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+</body>
+</html>
